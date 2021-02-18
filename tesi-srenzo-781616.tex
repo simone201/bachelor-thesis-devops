@@ -1,0 +1,430 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+\usepackage{setspace}
+\usepackage[paper=a4paper,margin=1in]{geometry}
+\usepackage{lipsum}
+\usepackage{microtype}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\graphicspath{ {images/} }
+
+\title{Test Document}
+\author{Simone Renzo}
+\date{Febbraio 2021}
+
+%%%%********************************************************************
+% fancy quotes
+\definecolor{quotemark}{gray}{0.7}
+\makeatletter
+\def\fquote{%
+	\@ifnextchar[{\fquote@i}{\fquote@i[]}%]
+}%
+\def\fquote@i[#1]{%
+	\def\tempa{#1}%
+	\@ifnextchar[{\fquote@ii}{\fquote@ii[]}%]
+}%
+\def\fquote@ii[#1]{%
+	\def\tempb{#1}%
+	\@ifnextchar[{\fquote@iii}{\fquote@iii[]}%]
+}%
+\def\fquote@iii[#1]{%
+	\def\tempc{#1}%
+	\vspace{1em}%
+	\noindent%
+	\begin{list}{}{%
+			\setlength{\leftmargin}{0.1\textwidth}%
+			\setlength{\rightmargin}{0.1\textwidth}%
+		}%
+		\item[]%
+		\begin{picture}(0,0)%
+			\put(-15,-5){\makebox(0,0){\scalebox{3}{\textcolor{quotemark}{``}}}}%
+		\end{picture}%
+		\begingroup\itshape}%
+	%%%%********************************************************************
+	\def\endfquote{%
+		\endgroup\par%
+		\makebox[0pt][l]{%
+			\hspace{0.8\textwidth}%
+			\begin{picture}(0,0)(0,0)%
+				\put(15,15){\makebox(0,0){%
+						\scalebox{3}{\color{quotemark}''}}}%
+		\end{picture}}%
+		\ifx\tempa\empty%
+		\else%
+		\ifx\tempc\empty%
+		\hfill\rule{100pt}{0.5pt}\\\mbox{}\hfill\tempa,\ \emph{\tempb}%
+		\else%
+		\hfill\rule{100pt}{0.5pt}\\\mbox{}\hfill\tempa,\ \emph{\tempb},\ \tempc%
+		\fi\fi\par%
+		\vspace{0.5em}%
+	\end{list}%
+}%
+\makeatother
+%%%%********************************************************************
+
+\begin{document}
+	
+	\begin{titlepage}
+		\noindent
+		\begin{minipage}[t]{0.19\textwidth}
+			\vspace{-4mm}{\includegraphics[scale=1.15]{logo_unimib.pdf}}
+		\end{minipage}
+		\begin{minipage}[t]{0.81\textwidth}
+			{
+				\setstretch{1.42}
+				{\textsc{Università degli Studi di Milano - Bicocca}} \\
+				\textbf{Scuola di Scienze} \\
+				\textbf{Dipartimento di Informatica, Sistemistica e Comunicazione} \\
+				\textbf{Corso di laurea in Informatica} \\
+				\par
+			}
+		\end{minipage}
+		
+		\vspace{40mm}
+		
+		\begin{center}
+			{\LARGE{
+					\setstretch{1.2}
+					\textbf{DevOps: studio e implementazione \\ di una pipeline di CI e CD \\ nel progetto Sphere}
+					\par
+			}}
+		\end{center}
+		
+		\vspace{40mm}
+		
+		\noindent
+		{\large \textbf{Relatore:} Prof. Mariani Leonardo} \\
+		
+		\noindent
+		{\large \textbf{Tutor Aziendale:} Dott. Mesiano Cristian}
+		
+		\vspace{15mm}
+		
+		\begin{flushright}
+			{\large \textbf{Relazione della prova finale di:}} \\
+			\large{Renzo Simone} \\
+			\large{Matricola 781616} 
+		\end{flushright}
+		
+		\vspace{40mm}
+		\begin{center}
+			{\large{\bf Anno Accademico 2020-2021}}
+		\end{center}
+		
+		\restoregeometry
+		
+	\end{titlepage}
+	
+	\selectlanguage{english}
+	\begin{abstract}
+		In un mondo in continuo sviluppo, la necessità di adattarsi velocemente al cambiamento è spesso
+		ciò che permette di contraddistinguere realtà di successo dalle fallimentari.
+		Il software è probabilmente uno dei prodotti che più segue questa filosofia di cambiamento repentino,
+		con la continua uscita di nuove tecnologie, nuove metodiche e la conseguente necessità di cambiare spesso
+		rotta e requisiti in base alle necessità o al mercato di riferimento.
+		
+		La nascita di metodi \emph{Agile} e di nuove filosofie improntate all'unire ciò che prima era separato,
+		in un unico processo, hanno permesso di adattarsi con successo ai cambiamenti, rendendo l'industria del
+		software quella più all'avanguardia e resiliente nel tempo, continuando tutt'oggi a migliorarsi sempre più.
+		
+ 		\begin{fquote}[Charles Darwin]
+		 	It is not the strongest of the species that survives, nor the most intelligent that survives.
+		 	It is the one that is the most adaptable to change.
+	 	\end{fquote}
+	\end{abstract}
+
+	\selectlanguage{italian}
+	\tableofcontents
+	
+	\chapter{Introduzione}
+	
+	\section{Il Contesto Aziendale}
+	
+		\subsection{Storia}
+		
+			\lipsum[1]
+		
+		\subsection{Il progetto Sphere}
+		
+			\lipsum[2]
+	
+		\subsection{Profilo personale in azienda}
+		
+			In PerceptoLab Srl, il candidato è stato assunto in Giugno 2020, con ruolo di Infrastructure \& DevOps Engineer,
+			integrato nel team di Backend Development.
+	
+	\section{Scopo del Project Work}
+	
+		\subsection{Obiettivi}
+	
+			Il Project Work ha come scopo il design e l'implementazione di un processo che includa una Pipeline di Continuous
+			Integration e di Continuous Delivery, nell'ambito del progetto Sphere.
+			
+			In particolare si prefigge questi obiettivi:
+			\begin{enumerate}
+				\item Creazione di un processo di \emph{Continuous Integration} per il repository progettuale, mediante l'uso di tool per il testing automatico e per la gestione delle Pull Request, con integrazione per build in ambiente macOS;
+				\item Creazione di un processo di \emph{Continuous Delivery} per la creazione di immagini Docker mediante utilizzo di tag specifici su repository e delivery degli artefatti su registry remoto;
+				\item Integrazione nella pipeline DevOps di \emph{analisi statica e dinamica} del codice mediante tools dedicati e definizione di quality gates in base alle necessità progettuali;
+				\item Creazione e gestione dell'infrastruttura (basata su \emph{Amazon Web Services} con tecnologia \emph{Kubernetes}) necessaria al deployment dei servizi sviluppati nel progetto aziendale.
+			\end{enumerate}
+	
+		\subsection{Pianificazione del Lavoro}
+	
+			Il Project Work si è svolto durante il periodo di 3 mesi tra l'1 Ottobre 2020 ed il 31 Dicembre 2020, in modalità di remote
+			working con l'utilizzo di tools di collaboration integrati in Google GSuite (Google Chat, Meets) e nella suite Atlassian
+			(Bitbucket, Jira, Confluence).
+			
+			INSERIRE UN GANTT.
+	
+		\subsection{Prodotti Finali}
+		
+			I prodotti del project work saranno i seguenti:
+			\begin{itemize}
+				\item Analisi dei Requisiti per i processi da implementare
+				\item Pipeline di Continuous Integration per i servizi di Backend e Mobile
+				\item Pipeline di Continuous Delivery per i servizi di Backend (Docker Containers)
+				\item Quality Assurance Gates basati sulla analisi dei test e del codice con tools dedicati
+				\item Infrastruttura basata su Amazon Web Services (Risorse Cloud, VMs) e Kubernetes su AWS (EKS) per gestire i processi descritti.
+			\end{itemize}
+	
+	\chapter{Modelli di Sviluppo del Software}
+	
+		\section{Il ciclo di vita del software}
+	
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.4\textwidth]{sdlc}
+				\caption{Software Development Lifecycle}
+				\label{fig:sdlc}
+			\end{figure}
+	
+			\subsection{Le fasi del ciclo di vita}
+	
+				Il ciclo di vita del software si riferisce ad una metodologia che permetta di ottenere software di massima qualità
+				al minimo costo di produzione e nel minor tempo possibile, dividendo la sua vita in diverse fasi consequenziali:
+				\begin{enumerate}
+					\item Planning e Analisi
+					\item Design
+					\item Implementazione
+					\item Testing e Integrazione
+					\item Manutenzione
+				\end{enumerate}
+				
+				\paragraph{Planning e Analisi}
+				Si analizzano i sistemi esistenti per i cambiamenti necessari ed il problema da risolvere in termini di software development.
+				Questa fase crea in output una serie di \emph{Requisiti} che possono essere Funzionali, Non Funzionali, o di Dominio, ed un piano
+				di lavoro per sviluppare tali requisiti in un tempo definito (ma, come vedremo, variabile in metodi \emph{Agile}).
+				Le definizioni di tali requisiti sono dettate dallo standard \href{https://standards.ieee.org/standard/610_12-1990.html}{\emph{IEEE 610.12-1990}}.
+				
+				\paragraph{Design}
+				I requisiti vengono trasformati in una \emph{specifica di Design} (architetturale ed implementativa), che verrà in seguito analizzata
+				dagli \emph{stakeholders}, ottenendo così feedback e suggerimenti in base alle esigenze. In questa fase diventa cruciale implementare
+				un sistema per incorporare i feedback così da migliorare il design finale ed evitare costi aggiuntivi a fine sviluppo.
+				
+				\paragraph{Implementazione}
+				Questa fase inizia lo sviluppo del software in se, seguendo la specifica di design della fase precedente, ed utilizzando convenzioni,
+				code style, pratiche e linee guida comuni per tutti i soggetti coinvolti nello sviluppo. L'utilizzo di linee guida comuni permette di
+				evitare fraintendimenti all'interno del team di sviluppo, e di facilitare le fasi future di manutenzione.
+				
+				\paragraph{Testing e Integrazione}
+				Il software sviluppato viene sottoposto a test per difetti e mancanze, risolvendo i problemi trovati lungo il percorso e migliorando
+				le feature implementate fino ad arrivare ad una qualità in linea con le specifiche originali.
+				In seguito, viene integrato con il resto dell'ambiente mediante deployment, così da poterlo iniziare ad utilizzare in casi reali.
+				
+				\paragraph{Manutenzione}
+				Alla fine del processo, difficilmente si saranno raggiunti tutti i requisiti alla perfezione, motivo per cui la fase di manutenzione
+				gioca un ruolo fondamentale per gestire tutto ciò che segue lo sviluppo principale del software. Questa fase permette quindi di analizzare
+				i comportamenti sul campo del software sviluppato, così da agire di conseguenza nel risolvere problemi in modo più mirato.
+	
+			\subsection{I modelli classici: Waterfall e Iterativo}
+			
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.8\textwidth]{waterfall}
+					\caption{Modello Waterfall}
+					\label{fig:waterfall}
+				\end{figure}
+				
+				Il processo di sviluppo storicamente più tradizionale e semplice è chiamato \textbf{Waterfall}.
+				Il nome suggerisce come, rispetto alle fasi del ciclo di vita del software, queste vengano eseguite in "cascata",
+				dove la fine di una fase permette di iniziare quella successiva, seguendo ciò che era stato appreso dalla produzione
+				manufatturiera applicandolo in ambito dello sviluppo software.
+				
+				La creazione di tale processo ha permesso di superare i limiti del processo \emph{code and fix}, permettendo di pianificare
+				in modo più strutturato e dividendo in modo netto le problematiche in base alla fase di appartenenza.
+				Altrettante sono però state le problematiche derivanti dalla sua applicazione, tra cui:
+				\begin{itemize}
+					\item Le fasi di \emph{alpha/beta} testing ripercorrono per natura tutte le fasi del processo, rallentando lo sviluppo;
+					\item Ogni fase viene congelata dopo la sua fine, rendendo impossibile la comunicazione tra clienti e sviluppatori dopo la fase iniziale;
+					\item La pianificazione viene effettuata solo all'inizio, orientando lo sviluppo ad una data specifica di rilascio; Ogni errore porta a ritardare tale data, che non può però essere stimata di nuovo;
+					\item La stima dei costi e delle risorse si rende difficile senza la prima fase di Analisi;
+					\item La specifica di requisiti vincola il prodotto da sviluppare, mentre nei casi reali spesso le necessità del cliente cambiano in corso d'opera, specialmente sul lungo termine;
+				\end{itemize}
+	
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.6\textwidth]{iterative}
+					\caption{Modello Iterativo}
+					\label{fig:iterative}
+				\end{figure}
+	
+				Un altro processo.
+	
+		\section{Modelli \emph{Agile}}
+	
+			\subsection{La filosofia \emph{Agile}}
+	
+			\subsection{Un modello di successo: SCRUM Framework}
+			
+			\subsection{Un modello veloce: eXtreme Programming}
+	
+		\section{Metodologie di Sviluppo \emph{Agile}: DevOps}
+	
+			\subsection{Un metodo ed un'etica}
+			
+			\subsection{Obiettivi delle pratiche DevOps}
+			
+			\subsection{Processo di Riferimento}
+	
+				\subsubsection{Continuous Integration}
+				
+				\subsubsection{Continuous Delivery}
+				
+				\subsubsection{Continuous Deployment}
+	
+		\section{Il ROI del DevOps}
+	
+	\chapter{Sviluppo ed Automazione su Cloud}
+	
+	\section{Perchè il Cloud?}
+	
+	\section{\emph{Infrastructure-as-a-Code}}
+	
+	\section{\emph{Configuration-as-a-Code}}
+	
+	\section{Containers ed ambienti controllati}
+	
+	\chapter{Analisi del Processo di Sviluppo}
+	
+	\section{Struttura del Progetto}
+	
+	\section{Il processo di sviluppo}
+	
+	\section{Requisiti e KPI}
+	
+	\section{Il processo DevOps}
+	
+	\subsection{Architettura High-Level e Fasi}
+	
+	\subsection{Gestione del Codice}
+	
+	\subsection{Pull Requests e Code Review}
+	
+	\subsection{Continuous Integration}
+	
+	\subsubsection{Test Automation}
+	
+	\subsubsection{Code Analysis}
+	
+	\subsection{Continuous Delivery}
+	
+	\subsubsection{Build Automation}
+	
+	\subsubsection{Artifacts Delivery}
+	
+	\subsection{Deployment}
+	
+	\section{Tecnologie e Strumenti}
+	
+	\subsection{SCM: Git}
+	
+	\subsection{Build System: Bazel}
+	
+	\subsection{Cloud Provider: AWS}
+	
+	\subsection{PR Management: Phabricator ed Arcanist}
+	
+	\subsection{CI/CD: Jenkins}
+	
+	\subsection{Code Analysis: SonarQube}
+	
+	\chapter{Tecnologie di Background}
+	
+	\section{Cloud Provider: AWS}
+	
+	\section{IaaC: Terraform}
+	
+	\section{CaaC: Ansible}
+	
+	\section{Containers: Docker}
+	
+	\chapter{Architettura Cloud}
+	
+	\section{Diagramma Architetturale}
+	
+	\section{Configurazione di Phabricator}
+	
+	\section{Configurazione di Jenkins}
+	
+	\subsection{Agent su AWS EC2}
+	
+	\subsection{Agent macOS On-Premise}
+	
+	\section{Configurazione di SonarQube}
+	
+	\section{Creazione ambiente di build con Docker}
+	
+	\chapter{La Pipeline di CI}
+	
+	\section{Tecnologie e Strumenti}
+	
+	\subsection{Phabricator ed Arcanist: un flusso controllato}
+	
+	\subsection{Jenkins: il motore del processo}
+	
+	\subsection{Docker: ambiente di testing unificato}
+	
+	\subsection{SonarQube: controllo qualità}
+	
+	\section{Le fasi della Pipeline}
+	
+	\section{Analisi del Codice}
+	
+	\subsection{Quality Gates}
+	
+	\subsection{Code Coverage}
+	
+	\subsection{Risposta a cambiamenti nella qualità}
+	
+	\section{Risultati di Testing e QA}
+	
+	\chapter{La Pipeline di CD}
+	
+	\section{Tecnologie e Strumenti}
+	
+	\subsection{Jenkins: il motore del processo}
+	
+	\subsection{Docker: ambiente di build unificato}
+	
+	\section{Le fasi della Pipeline}
+	
+	\section{Analisi delle Vulnerabilità}
+	
+	\section{Risultati}
+	
+	\chapter{Conclusioni}
+	
+	\section{Obiettivi Raggiunti}
+	
+	\section{Risultati su Requisiti e KPI}
+	
+	\section{Evoluzioni Future}
+	
+	\section{Considerazioni Personali}
+	
+\end{document}
