@@ -170,7 +170,7 @@
 				\item Creazione di un processo di \emph{Continuous Integration} per il repository progettuale, mediante l'uso di tool per il testing automatico e per la gestione delle Pull Request, con integrazione per build in ambiente macOS;
 				\item Creazione di un processo di \emph{Continuous Delivery} per la creazione di immagini Docker mediante utilizzo di tag specifici su repository e delivery degli artefatti su registry remoto;
 				\item Integrazione nella pipeline DevOps di \emph{analisi statica e dinamica} del codice mediante tools dedicati e definizione di quality gates in base alle necessità progettuali;
-				\item Creazione e gestione dell'infrastruttura (basata su \emph{Amazon Web Services} con tecnologia \emph{Kubernetes}) necessaria al deployment dei servizi sviluppati nel progetto aziendale.
+				\item Creazione e gestione dell'infrastruttura (basata su \emph{Amazon Web Services}) necessaria al deployment dei servizi sviluppati nel progetto aziendale.
 			\end{enumerate}
 	
 		\subsection{Pianificazione del Lavoro}
@@ -189,7 +189,7 @@
 				\item Pipeline di Continuous Integration per i servizi di Backend e Mobile
 				\item Pipeline di Continuous Delivery per i servizi di Backend (Docker Containers)
 				\item Quality Assurance Gates basati sulla analisi dei test e del codice con tools dedicati
-				\item Infrastruttura basata su Amazon Web Services (Risorse Cloud, VMs) e Kubernetes su AWS (EKS) per gestire i processi descritti.
+				\item Infrastruttura basata su Amazon Web Services (Risorse Cloud, VMs) per gestire i processi descritti.
 			\end{itemize}
 	
 	\chapter{Modelli di Sviluppo del Software}
@@ -250,11 +250,13 @@
 					\label{fig:waterfall}
 				\end{figure}
 				
-				Il processo di sviluppo storicamente più tradizionale e semplice è chiamato \textbf{Waterfall}.
+				\paragraph{Waterfall}
+				Il processo di sviluppo storicamente più tradizionale e semplice è chiamato \emph{Waterfall}.
 				Il nome suggerisce come, rispetto alle fasi del ciclo di vita del software, queste vengano eseguite in "cascata",
 				dove la fine di una fase permette di iniziare quella successiva, seguendo ciò che era stato appreso dalla produzione
 				manufatturiera applicandolo in ambito dello sviluppo software.
 				
+				\vspace{5mm}
 				La creazione di tale processo ha permesso di superare i limiti del processo \emph{code and fix}, permettendo di pianificare
 				in modo più strutturato e dividendo in modo netto le problematiche in base alla fase di appartenenza.
 				Altrettante sono però state le problematiche derivanti dalla sua applicazione, tra cui:
@@ -273,7 +275,29 @@
 					\label{fig:iterative}
 				\end{figure}
 	
-				Un altro processo.
+				\paragraph{Iterativo}
+				Una evoluzione del processo \emph{Waterfall} è il modello \emph{Iterativo}, basato sullo stesso ciclo di vita descritto precedentemente, ma con un sostanziale cambiamento che lo rende la base dei modelli odierni, ovvero il riconoscimento che
+				lo sviluppo di un software non è composto di una singola iterazione del flusso ma di diverse iterazioni, sempre incrementali.
+				
+				\vspace{5mm}
+				L'idea alla base del modello \emph{Iterativo} consta nel ripetere il ciclo di sviluppo più volte, in porzioni di tempo più ristrette,
+				permettendo agli sviluppatori di apprendere dai cicli precedenti e di migliorare i successivi, grazie alla continua
+				revisione dei requisiti e del design del software.
+				
+				\vspace{5mm}
+				Il processo parte con una prima iterazione volta a creare un prodotto basilare ma usabile, in modo da raccogliere il feedback
+				dell'utente o cliente da utilizzare come input per il ciclo successivo. Per guidare le varie iterazioni, si sfrutta una lista
+				di tasks necessari per lo sviluppo del software, che include sia nuove feature sia modifiche al design provenienti da iterazioni
+				precedenti, da aggiornare in ogni fase di analisi (per ogni iterazione).
+				
+				Confrontato con \emph{Waterfall}, il modello \emph{Iterativo} porta diversi vantaggi:
+				\begin{itemize}
+					\item L'utente viene coinvolto ad ogni iterazione, migliorando il feedback e la qualità del prodotto finale;
+					\item Ogni iterazione incrementale produce un \emph{deliverable} che può essere accettato dall'utente, e solo dopo ciò si potrà procedere alla prossima iterazione;
+					\item Ogni iterazione permette di rimodulare le risorse necessarie allo sviluppo, così da attuare tecniche di cost-saving;
+					\item Il prodotto può essere consegnato fin dalla prima iterazione, seppur in fase embrionale ma funzionante;
+					\item Il modello \emph{Iterativo} può essere applicato anche a progetti di piccole dimensioni con successo.
+				\end{itemize}
 	
 		\section{Modelli \emph{Agile}}
 	
@@ -355,13 +379,13 @@
 	
 	\chapter{Tecnologie di Background}
 	
-	\section{Cloud Provider: AWS}
+	\section{Cloud Provider: \emph{AWS}}
 	
-	\section{IaaC: Terraform}
+	\section{Infrastructure-as-a-Code: \emph{Terraform}}
 	
-	\section{CaaC: Ansible}
+	\section{Configuration-as-a-Code: \emph{Ansible}}
 	
-	\section{Containers: Docker}
+	\section{Container Engine: \emph{Docker}}
 	
 	\chapter{Architettura Cloud}
 	
