@@ -301,10 +301,139 @@
 	
 		\section{Modelli \emph{Agile}}
 	
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.8\textwidth]{agile}
+				\caption{Modello Agile Generico}
+				\label{fig:agile_generic}
+			\end{figure}
+	
 			\subsection{La filosofia \emph{Agile}}
+				
+				La filosofia \emph{Agile} è emersa a partire dai primi anni 2000, grazie alla pubblicazione del \href{https://agilemanifesto.org/iso/it/principles.html}{\emph{"Manifesto for Agile Software Development"}} nel 2001, nato dall'evoluzione dei metodi classici iterativi ed incrementali.
+				
+				L'utilizzo di questa filosofia permette di ridurre sensibilmente il rischio di errori dovuti alla male interpretazione dei
+				requisiti o il ritardo nelle tempistiche di consegna del prodotto finale, ponendo il focus sulla \textbf{adattabilità} dei processi al cambiamento e sulla \textbf{soddisfazione} del cliente come metrica di successo di un processo di sviluppo.
+				Ciò è permesso grazie alla suddivisione dello sviluppo in \textbf{iterazioni} di piccole dimensioni (generalmente 1-3 settimane),
+				permettendo un rilascio continuo del software in modo incrementale, e dall'attuazione di alcuni principi tra cui:
+				
+				\begin{itemize}
+					\item \textbf{Individui e interazioni}: nello sviluppo \emph{Agile}, auto-organizzazione e motivazione sono importanti tanto quanto le interazioni tra persone e il pair programming;
+					\item \textbf{Software Funzionante}: viene consegnato frequentemente software funzionante in tempi preferibilmente brevi, sotto forma di \emph{Demo};
+					\item \textbf{Collaborazione col Cliente}: committenti a sviluppatori devono lavorare insieme quotidianamente per tutta la durata del progetto;
+					\item \textbf{Risposta al Cambiamento}: lo sviluppo \emph{Agile} si concentra nel fornire una risposta veloce ai cambiamenti nei requisiti, anche in fasi avanzate dello sviluppo;
+					\item \textbf{Gestione delle Priorità}: lo sviluppo inizia solo dopo aver messo in priorità gli obiettivi, spesso utilizzando una tecnica chiamata \emph{MoSCoW} (\emph{Must - Should - Could - Won't Have});
+					\item \textbf{Timeboxing}: suddividere il progetto di sviluppo in intervalli temporali ben definiti, spesso di pochi giorni o settimane, entro il quale consegnare alcune features, contenuti in intervalli più lunghi di consegna del prodotto finale o di una parte di esso.
+				\end{itemize}
+			
+				I modelli \emph{Agile} presentano diversi vantaggi che han permesso la loro adozione nella maggior parte degli ambienti di sviluppo software, tra cui:
+				\begin{itemize}
+					\item I processi sono molto \textbf{realistici} e riflettono il mercato;
+					\item Promuovono il lavoro in team e il cross-training;
+					\item Le funzionalità vengono sviluppate velocemente e dimostrate al cliente;
+					\item Utilizzabili sia con requisiti fissati che in continuo cambiamento;
+					\item Pianificazione ridotta al minimo;
+					\item Facilità di gestione.
+				\end{itemize}
+			
+				Contemporaneamente portano anche alcuni svantaggi, derivanti dalla flessibilità del processo e quindi dalla non applicabilità in tutti i casi esistenti:
+				\begin{itemize}
+					\item Difficoltà di gestione di dipendenze complesse;
+					\item Rischio aumentato sulla sostenibilità e mantenibilità del processo;
+					\item Necessità di un piano di lavoro generale, e di \textbf{figure chiave} per far funzionare il processo;
+					\item Forte dipendenza dal feedback del cliente, per colpa di cui il team potrebbe essere direzionato in modo errato.
+				\end{itemize}
 	
 			\subsection{Un modello di successo: SCRUM Framework}
 			
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=1\textwidth]{scrum}
+					\caption{SCRUM Framework}
+					\label{fig:scrum}
+				\end{figure}
+			
+				Nel mondo \emph{Agile} sono nati diversi metodi e processi con approcci differenti alla filosofia precedentemente descritta, uno dei quali è \textbf{SCRUM Framework}, il più diffuso ed utilizzato nel mondo dello sviluppo software.
+				
+				Il termine \textbf{SCRUM} deriva dal gioco del \emph{Rugby}, più precisamente dal pacchetto di mischia, e viene usato
+				come metafora del team di sviluppo che deve lavorare insieme in modo che tutti gli attori del progetto \emph{spingano}
+				nella stessa direzione, agendo come una unica entità coordinata.
+				
+				Notiamo come non stiamo definendo un processo, ma bensì un \emph{framework}, e come tale si propone come
+				collezione di metodologie che sposano la filosofia \emph{Agile} ma che possono essere implementate al meglio
+				delle proprie possibilità, anche con minimi adattamenti.
+				
+				\emph{SCRUM} si basa sulla teoria dei controlli empirici di analisi strumentale e funzionale di processo, e si basa
+				su alcuni pilastri derivanti da tale teoria:
+				\begin{enumerate}
+					\item \textbf{Trasparenza}: gli aspetti rilevanti del processo devono essere visibili ai responsabili. Questa trasparenza richiede che venga utilizzato un \emph{linguaggio comune} condiviso da tutti, ed una definizione di
+					\emph{done} (finito) condivisa tra gli addetti ai lavori e chi deve accettarlo;
+					\item \textbf{Ispezione}: l'uso di SCRUM prevede l'ispezione frequente degli \emph{artefatti} prodotti ed
+					i progressi realizzati verso gli obiettivi stabiliti, individuando precocemente eventuali deviazioni.
+					La frequenza di tali ispezioni deve essere tale da non rallentare il corso dei lavori, e deve essere effettuato
+					da ispettori qualificati;
+					\item \textbf{Adattamento}: se durante l'ispezione si trovano difformità oltre i limiti accettabili, bisogna
+					intervenire sul processo stesso e sul materiale prodotto. L'intervento deve essere portato a termine il più
+					velocemente possibile per evitare ulteriori ripercussioni e ridurre al minimo le perdite. Vengono quindi definite
+					quattro occasioni per ispezione e adattamento:
+					\begin{itemize}
+						\item Sprint Planning Meeting;
+						\item Daily Scrum;
+						\item Sprint Review;
+						\item Sprint Retrospective.
+					\end{itemize}.
+				\end{enumerate}
+			
+				\paragraph{Il Team SCRUM}
+				In un processo dove si utilizza \emph{SCRUM}, viene definito il team di sviluppo come \emph{Team SCRUM}, formato da diverse figure:
+				\begin{itemize}
+					\item \textbf{Product Owner}: rappresenta gli stakeholders (cliente), ed è responsabile del valore business del team.
+					Il PO definisce gli \emph{item} (requisiti di prodotto) in base ai bisogni dei clienti (usando \emph{user stories}),
+					assegnando la loro priorità e li inserisce nel \emph{product backlog};
+					\item \textbf{Team di Sviluppo}: l'insieme degli sviluppatori responsabili della consegna del prodotto, con incrementi
+					potenzialmente rilasciabili alla fine di ogni \textbf{Sprint}. Il team è composto da un numero di persone che varia da 3 a 9, con competenze cross-funzionali e che si auto-organizza;
+					\item \textbf{Scrum Master}: responsabile della rimozione di ostacoli che potrebbero limitare la capacità produttiva
+					del team e quindi di raggiungere gli obiettivi dello \emph{Sprint}. Sebbene possa sembrare un ruolo manageriale,
+					lo Scrum Master è solo il supervisore del processo, detta l'autorità relativa alla applicazione delle norme e presiede
+					le riunioni importanti, e funge da protezione al team di sviluppo che può così concentrarsi sullo sviluppo.
+				\end{itemize}
+			
+				\paragraph{Sprint}
+				Nello sviluppo \emph{SCRUM}, l'unità base di tempo è chiamato \emph{Sprint}, generalmente di durata di 1-4 settimane.
+				Ogni Sprint inizia con una \textbf{riunione di pianificazione}, e si conclude con una \textbf{riunione di revisione} del raggiungimento
+				degli obiettivi. Durante lo Sprint non è inoltre permesso cambiare gli obiettivi prefissati all'inizio, che verranno
+				quindi tenute in considerazione nell'iterazione successiva.
+				
+				Al termine di ogni Sprint, il team consegna una versione potenzialmente completa e funzionale del prodotto, contenente
+				gli sviluppi conclusi nello Sprint stesso e quelli dei precedenti già conclusi.
+				Le funzionalità da sviluppare in uno Sprint provengono dal \emph{product backlog}, come compilato e prioritizzato dal
+				\emph{Product Owner}, ed una volta inserite nello \textbf{sprint backlog} non possono essere più aggiunte ne rimosse
+				durante il corso dell'iterazione.
+				
+				\paragraph{Eventi}
+				In SCRUM gli eventi vengono sfruttati per \textbf{creare una routine} e ridurre al minimo riunioni al di fuori di quelle definite
+				dal framework stesso, tali eventi sono inoltre inclusi nel timeboxing del processo così da integrarsi al meglio con lo sviluppo stesso senza bloccare il team più del dovuto.
+				
+					\subparagraph{Sprint Planning}
+					All'inizio di ogni Sprint, viene effettuato un meeting volto a pianificare le attività dello stesso e gli obiettivi da conseguire entro la sua conclusione, e coinvolge tutto lo Scrum Team. Al suo interno viene definito
+					lo \emph{sprint backlog} e si ottiene una stima delle tempistiche e risorse necessarie al suo completamento.
+					
+					\subparagraph{Daily Scrum}
+					Ogni giorno durante lo Sprint, viene effettuata una riunione di comunicazione con tutto il team, in cui ogni componente aggiorna gli altri con la sua situazione di sviluppo. Tale meeting viene effettuato nello stesso
+					posto e ora ogni giorno, in un tempo ben definito e ridotto (15 minuti massimo), e viene generalmente effettuato
+					in piedi (da qui il nome \emph{daily standup}).
+					
+					\subparagraph{Sprint Review}
+					Alla fine dello Sprint viene effettuato un meeting volto a ispezionare l'incremento e adattare, se necessario,
+					il \emph{product backlog}. Durante tale riunione il team di sviluppo e gli \emph{stakeholders} collaborano su
+					ciò che è stato prodotto durante lo Sprint, viene individuato ciò che è stato "fatto" e non, si discute dei
+					problemi incontrati durante lo sviluppo e il \textbf{Product Owner} discute il \emph{product backlog} fornendo una stima dei tempi di sviluppo futuri.
+					
+					\subparagraph{Sprint Retrospective}
+					Questo meeting fornisce al Team Scrum la possibilità di ispezionare se stesso e creare quindi un piano di miglioramento da attuare nelle prossime iterazioni. Durante tale meeting si analizza l'ultimo Sprint riguardo
+					persone, processi e strumenti, così da identificare i punti di miglioramento e cosa invece ha funzionato correttamente. Lo Scrum Master fornisce un ruolo chiave durante la retrospettiva, incoraggiando il team a migliorarsi,
+					e aiutando a trovare i punti di discussione.
+							
 			\subsection{Un modello veloce: eXtreme Programming}
 	
 		\section{Metodologie di Sviluppo \emph{Agile}: DevOps}
