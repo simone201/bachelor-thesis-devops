@@ -344,7 +344,7 @@
 					\item Forte dipendenza dal feedback del cliente, per colpa di cui il team potrebbe essere direzionato in modo errato.
 				\end{itemize}
 	
-			\subsection{Un modello di successo: SCRUM Framework}
+			\subsection{Un caso di successo: SCRUM Framework}
 			
 				\begin{figure}[h]
 					\centering
@@ -434,7 +434,52 @@
 					persone, processi e strumenti, così da identificare i punti di miglioramento e cosa invece ha funzionato correttamente. Lo Scrum Master fornisce un ruolo chiave durante la retrospettiva, incoraggiando il team a migliorarsi,
 					e aiutando a trovare i punti di discussione.
 							
-			\subsection{Un modello veloce: eXtreme Programming}
+			\subsection{Un metodo veloce: eXtreme Programming}
+			
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.5\textwidth]{xp_plan}
+					\caption{Iterazione in XP}
+					\label{fig:xp_plan}
+				\end{figure}
+			
+				Il metodo di sviluppo denominato \textbf{eXtreme Programming} (abbreviato \textbf{XP}), enfatizza la scrittura di codice
+				di qualità e la rapidità di risposta ai cambiamenti dei requisiti. Rispetto a \emph{SCRUM Framework}, XP si basa su
+				elementi chiave totalmente differenti tra cui il \emph{Pair Programming}, lo \emph{Unit Testing} e il \emph{Refactoring},
+				oltre che la necessità di scrivere solo codice strettamente necessario nel modo più semplice possibile.
+				
+				\paragraph{Le 12 Regole di XP}
+				\begin{enumerate}
+					\item \textbf{Feedback}
+						\begin{enumerate}
+							\item \emph{Pair Programming}: due programmatori lavorano assieme sulla stessa macchina, uno di essi è il \emph{driver} che scrive il codice e l'altro è il \emph{navigator} che ragiona sull'approccio;
+							\item \emph{Planning Game}: una riunione di pianificazione che avviene una volta per iterazione;
+							\item \emph{Test Driven Development}: i test automatici (unit e acceptance) vengono scritti \emph{prima} del codice;
+							\item \emph{Whole Team}: il cliente non è colui che finanzia, ma colui che utilizza il sistema, motivo per cui deve essere sempre presente e disponibile per verifiche;
+						\end{enumerate}
+					\item \textbf{Continuous Process}
+						\begin{enumerate}
+							\item \emph{Continuous Integration}: integrare continuamente i cambiamenti nel codice eviterà problemi più avanti nel progetto;
+							\item \emph{Refactoring}: riscrivere il codice senza cambiarne le funzionalità, rendendolo più semplice e generico;
+							\item \emph{Small Releases}: il software viene rilasciato frequentemente con incrementi ridotti ma che portano valore concreto;
+						\end{enumerate}
+					\item \textbf{Shared Comprehension}:
+						\begin{enumerate}
+							\item \emph{Coding Standards}: utilizzare uno standard di scrittura preciso e condiviso, da rispettare lungo tutto il corso del progetto;
+							\item \emph{Collective Code Ownership}: ognuno è responsabile di tutto il codice, quindi chiunque contribuisce alla sua stesura;
+							\item \emph{Simple Design}: seguire un approccio \emph{"simple is better"} durante la progettazione;
+							\item \emph{System Metaphor}: descrivere formalmente il sistema mediante metafore, rendendolo più semplice da comprendere in poche parole;
+						\end{enumerate}
+					\item \textbf{Programmers Wellbeing}:
+						\begin{enumerate}
+							\item \emph{Sustainable Pace}: gli sviluppatori non dovrebbero lavorare oltre un numero di ore stabilite settimanalmente (generalmente 40).
+						\end{enumerate}
+				\end{enumerate}
+			
+			Una delle differenze sostanziali con altri metodi \emph{Agile}, è il focus sul \textbf{metodo di sviluppo} piuttosto che
+			sul processo in se. Extreme Programming si prefigge quindi di ottimizzare al meglio lo sviluppo del software mediante 
+			tecniche e metodiche applicabili dagli sviluppatori stessi, senza necessità di utilizzo di figure esterne o di guide,
+			e propone diversi concetti che sono stati ripresi in buona parte dalle metodologie \emph{DevOps} che andremo a descrivere.
 	
 		\section{Metodologie di Sviluppo \emph{Agile}: DevOps}
 	
