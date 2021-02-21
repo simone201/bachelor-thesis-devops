@@ -11,6 +11,7 @@
 \usepackage{times}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{float}
 \graphicspath{ {images/} }
 
 \title{Test Document}
@@ -279,12 +280,12 @@
 				Una evoluzione del processo \emph{Waterfall} è il modello \emph{Iterativo}, basato sullo stesso ciclo di vita descritto precedentemente, ma con un sostanziale cambiamento che lo rende la base dei modelli odierni, ovvero il riconoscimento che
 				lo sviluppo di un software non è composto di una singola iterazione del flusso ma di diverse iterazioni, sempre incrementali.
 				
-				\vspace{5mm}
+				\vspace{3mm}
 				L'idea alla base del modello \emph{Iterativo} consta nel ripetere il ciclo di sviluppo più volte, in porzioni di tempo più ristrette,
 				permettendo agli sviluppatori di apprendere dai cicli precedenti e di migliorare i successivi, grazie alla continua
 				revisione dei requisiti e del design del software.
 				
-				\vspace{5mm}
+				\vspace{3mm}
 				Il processo parte con una prima iterazione volta a creare un prodotto basilare ma usabile, in modo da raccogliere il feedback
 				dell'utente o cliente da utilizzare come input per il ciclo successivo. Per guidare le varie iterazioni, si sfrutta una lista
 				di tasks necessari per lo sviluppo del software, che include sia nuove feature sia modifiche al design provenienti da iterazioni
@@ -482,13 +483,101 @@
 			e propone diversi concetti che sono stati ripresi in buona parte dalle metodologie \emph{DevOps} che andremo a descrivere.
 	
 		\section{Metodologie di Sviluppo \emph{Agile}: DevOps}
-	
+		
+			In un mondo dove lo sviluppo \emph{Agile} prende sempre più piede, si è reso necessario trovare un qualcosa che potesse
+			migliorare notevolmente i processi già in atto, attuando delle modifiche sostanziali al come i team di sviluppo lavorano
+			tra di loro e a quale livello di integrazione. 
+			
+			In particolare ciò di cui ci si è accorti nel tempo è il livello di isolamento che ogni team attua al proprio lavoro, in particolare tra i team di Development e Operations, consci però che un software è fatto di entrambe le parti che non possono prescindere dall'altra.
+		
+			\subsection{Un po' di storia}
+				
+				Se qualcuno chiedesse da dove ebbe \textbf{origine} il termine \textbf{DevOps}, la risposta sarebbe \emph{Patrick Debois}. Quando fu un IT Consultant in Belgio, nel 2007, Debois lavorò ad un progetto per il governo belga riguardo una migrazione di un data center dove fu in carico del testing dei sistemi. Durante questo periodo si rese conto come stesse spendendo molto tempo tra il mondo dello sviluppo (Development) e delle Operations.
+				
+				Nel 2008, durante una conferenza riguardo l'\emph{Agile}, \emph{Andrew Shafer} fece una sessione riguardo l'\emph{Agile Infrastructure} dove solo \emph{Patrick Debois} ne prese parte. Nel corso dell'anno crearono un gruppo dove poter discutere di come risolvere questo distaccamento tra il mondo Development e Operations, cosa che si evolse nell'Ottobre 2009 quando crearono un evento per avvicinare sviluppatori e system administrators che chiamarono \textbf{DevOpsDays}, unendo così le parole Development e Operations per la prima volta.
+				
+				Da allora il termine \textbf{DevOps} continuò ad essere usato su Twitter, fino ad arrivare alla accezione odierna.
+			
 			\subsection{Un metodo ed un'etica}
+			
+				Applicare un metodo e delle pratiche \emph{DevOps} non vuol dire solamente utilizzare determinati tool o effettuare
+				certe azioni, ma il concetto si estende a ciò che può essere definito \textbf{una etica da applicare} a livello aziendale o progettuale a cui tutti gli attori coinvolti devono aderire per trarne il massimo beneficio.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=0.5\textwidth]{devops_culture}
+					\caption{La cultura DevOps}
+					\label{fig:devops_culture}
+				\end{figure}
+				
+				I principi guida dell'etica \emph{DevOps} includono un cambiamento culturale pervasivo, un metodo per misurare le prestazioni, automazione estesa e condivisione, si potrebbe anche definire il \emph{DevOps} come l'approccio più moderno al classico \textbf{Application Lifecycle Management} (ALM). Questi principi possono essere riassunti in un framework chiamato \textbf{CALMS}, dall'acronimo \emph{Culture - Automation - Lean - Measurement - Sharing}, termine coniato da \emph{Jez Humble}, co-autore del libro \emph{The DevOps Handbook}.\\*
+				
+				I team di sviluppo e di operations si uniscono e diventano \textbf{responsabili dell'intero processo produttivo}, dallo sviluppo delle feature alla messa in produzione del software fino alla manutenzione e al monitoring dello stesso. L'approccio all'intero ciclo di vita del software da parte di entrambi i team permette di avvicinare gli sviluppatori a ciò che realmente vuole l'utente, acquisendo anche feedback dalle fasi finali e aumentando la trasparenza attraverso tutti gli attori coinvolti.
 			
 			\subsection{Obiettivi delle pratiche DevOps}
 			
+				La principale caratteristica delle pratiche \emph{DevOps} è la \textbf{collaborazione} tra i ruoli di Development e Operations.
+				Per supportare tale collaborazione si necessita una attitudine di \emph{shared responsibility}, è facile infatti perdere interesse per una materia o l'altra se ci sono team separati a gestirle senza comunicazione ne necessità di interazione tra loro, faccenda diversa quando invece il team di sviluppo controlla tutto il processo dall'inizio alla fine comprendendo processi di operations come \textbf{deployment} e \textbf{monitoring} in produzione.\\*
+				
+				Per applicare tali pratiche è inoltre indispensabile un cambiamento organizzativo all'interno dei team, \textbf{non devono esserci separazioni tra Development e Operations} sia di locazione sia di argomenti trattati, ognuno deve essere responsabile dei successi e fallimenti di un sistema puntando sempre più ad eliminare le divergenze tra i due team citati, arrivando ad un tutt'uno.\\*
+				
+				Un altro cambiamento sostanziale, derivante dalla filosofia \emph{Agile}, è la necessità di \textbf{team autonomi}, ovvero che non necessitano la presenza costante di figure manageriali ne di processi complessi grazie al quale si possano fare determinate decisioni. Ciò si traduce in una crescente \textbf{fiducia} nelle decisioni prese dal team, ed una gestione dei processi più snello che permetta di non rallentare i lavori per colpa dell'introduzione di azioni solo managing-oriented.\\*
+			
+				Questi cambiamenti a livello culturale, pratico e metodologico si traducono in risultati tangibili a livello di business, e non solo tecnico:
+				\begin{itemize}
+					\item Adozione di processi \emph{Agile} facilitata;
+					\item Velocità di rilascio notevolmente aumentata (deliverables);
+					\item Velocità di risposta ai cambiamenti aumentata e facilitata, aumento del livello di feedback;
+					\item Team \emph{cross-skilled} e \emph{self-improved} per costi ridotti e performance migliorate;
+					\item Qualità del prodotto notevolmente aumentata, grazie al testing estensivo.
+				\end{itemize}
+			
+				Nel \textbf{"Atlassian Survey on DevOps Trends"} del 2020, il \textbf{99\%} degli intervistati ha espresso che l'utilizzo di pratiche DevOps ha portato un \textbf{impatto positivo} nella loro realtà, tra cui il 78\% ha dovuto imparare nuove skill per utilizzare tali pratiche ma al contempo al 48\% ha contribuito anche ad un aumento di salario grazie al self-improvement.
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.65\textwidth]{atlassian_devops_practices}
+					\caption{Atlassian Survey - Adozione DevOps}
+					\label{fig:atlassian_devops_practices}
+				\end{figure}
+
+				I vantaggi del \emph{DevOps} sono inoltre chiari da questo survey, dove il 61\% degli intervistati ha affermato che applicare tali pratiche ha migliorato la qualità dei prodotti finali, e per il 49\% ha velocizzato il \emph{time-to-market} e la consegna di \emph{deliverables} anche parziali in meno iterazioni. Nei fattori di successo nell'implementazione di pratiche \emph{DevOps} si trovano i \textbf{tool corretti} e le \textbf{persone giuste}, che possano collaborare e performare ottimamente con una ottima abilità di problem-solving.
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.7\textwidth]{atlassian_devops_impact}
+					\caption{Atlassian Survey - Impatto sul Business}
+					\label{fig:atlassian_devops_impact}
+				\end{figure}
+				
+				Il rovescio della medaglia risiede nella difficoltà di implementazione dei metodi \emph{DevOps}, dove ben l'85\% ritiene di aver trovato problemi o difficoltà, e vede come principali fattori problematici la mancanza di \emph{skills} dei propri dipendenti, la presenza di infrastrutture \emph{legacy} e difficilmente mantenibili ed estensibili, e una difficoltà nell'aggiustare la \emph{cultura} aziendale radicata nel tempo.\\*
+				
+				Infine, riprendendo i pilastri del \emph{DevOps}, ritroviamo ciò che viene definito un "metodo" per misurare le performance e i risultati di tali pratiche, sia tecniche che business. Nel survey il 74\% ritiene di avere un metodo efficace per misurare l'impatto di ciò che viene implementato (generalmente basato sulla velocità di deployment o delivery), e ben il 97\% si definisce soddisfatto del modo in cui stanno misurando gli effetti delle pratiche.
+			
 			\subsection{Processo di Riferimento}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.8\textwidth]{devops_cycle}
+					\caption{Processo DevOps-based}
+					\label{fig:devops_cycle}
+				\end{figure}
 	
+				Una tipica modellizzazione del processo \textbf{DevOps-oriented} è definita da un simbolo dell'infinito, che riflette ciò che abbiamo introdotto con le metodologie \emph{Agile} e lo sviluppo ad iterazioni incrementali. Il processo finale ha come scopo la massima agilità ed automazione durante tutte le fasi di sviluppo e deployment, permettendo un continuo avvicinamento tra i ruoli di development e operations in ogni fase dello stesso.
+				
+				Il processo \emph{DevOps} deve essere implementato unendo cultura, metodiche e strumenti in un ambiente coeso, basandosi sempre su processi di tipo \emph{Agile} o sfruttando framework che permettano di implementarlo in modo efficace.\\*
+				
+				Le sue fasi sono così definite:
+				\begin{itemize}
+					\item \textbf{Ideate/Plan}: i tasks vengono organizzati, pianificati nell'iterazione (Sprint), e vengono inizializzati i tools di gestione del processo (Boards, Documentazione, SCM, e molti altri). L'idea di base è poter sfruttare il concetto di \textbf{user story} introdotto nelle metodologie \emph{Agile}, così da permettere sia a "dev" che "ops" di comprendere la feature in modo semplice;
+					\item \textbf{Code/Build}: il codice viene scritto e controllato mediante utilizzo di \textbf{Code Reviews}, che una volta approvata viene unita alla branch principale del VCS scelto. Il codice deve poi essere compilato (buildato) per controllare la sua correttezza e produrre i primi artefatti di debug;
+					\item \textbf{Continuous Integration}: una fase cruciale che si mixa con quella di build, il codice viene testato ed integrato con l'attuale codebase prima del merge sulla branch principale, evidenziando eventuali errori nei test automatici o nelle dipendenze dei sistemi. Questo processo è continuo e automatico per ogni commit o Code Review creati, e vengono sfruttati tool dedicati a velocizzarlo e implementarlo con successo;
+					\item \textbf{Deploy/Release}: una volta passata la fase di \emph{CI}, il codice è pronto per il rilascio. Questa fase viene automatizzata mediante processi di \textbf{Continuous Delivery} e \textbf{Continuous Deployment} (uno conseguente all'altro), ovvero la build degli artefatti finiti e pronti al rilascio viene "inviata" ad un sistema centralizzato di storage, per poi essere deployato automaticamente sulla infrastruttura ospitante.
+					\item \textbf{Continuous Feedback}: la fase più operations-oriented del processo, il codice deployato deve essere controllato mediante sistemi di \textbf{Monitoring}, creando così delle metriche di performance ed implementando un flusso di \textbf{Observability}.
+				\end{itemize}
+				
+				Nella nostra analisi ci concentreremo sul descrivere le fasi centrali del processo di \emph{DevOps}, ovvero quelle che coinvolgono attivamente sempre tutto il team e che vengono effettuate più spesso durante le iterazioni del processo, ovvero \textbf{Continuous Integration}, \textbf{Continuous Delivery} e \textbf{Continuous Deployment}.
+				
 				\subsubsection{Continuous Integration}
 				
 				\subsubsection{Continuous Delivery}
