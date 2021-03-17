@@ -1,0 +1,20 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    
+    \chapter*{Conclusioni}
+    \addcontentsline{toc}{chapter}{Conclusioni}
+	
+	    Il progetto svolto durante i 3 mesi ha portato un drastico cambiamento nel modo in cui il team di sviluppo del progetto Sphere si approccia alla scrittura, revisione e qualità del codice. Questo miglioramento è molto pronunciato nello sviluppo delle componenti più attive, ovvero i moduli Mobile ed i servizi Backend, dove il testing estensivo e il processo standardizzato han permesso di ottenere prestazioni di sviluppo notevolmente migliorate ed una \emph{awareness} del progetto superiore a prima.\\*
+        
+        I dati presentati nelle tabelle \ref{tab:sphere_legacy_kpi} e \ref{tab:sphere_devops_kpi} fanno inoltre evincere un miglioramento netto di tutti gli indicatori di performance definiti a discapito di un costo (monetario) di mantenimento superiore a causa di tutte le risorse create per gestire e controllare il processo \emph{DevOps}. L'unico punto \textbf{non soddisfatto} tra i vari \emph{tasks} riguardanti il processo di \textbf{Continuous Integration}, è stato l'implementazione di un sistema di \textbf{Code Coverage} funzionante per tutti i servizi di backend, che però ha un impatto variabile essendo già presenti molteplici \emph{unit} ed \emph{integration} tests.\\*
+	
+	    L'integrazione di un sistema completo di \textbf{analisi della Code Coverage} su servizi basati su linguaggio \textbf{C++} e \textbf{Python}, è sicuramente uno dei primi punti salienti da integrare in futuro, oltre che indispensabile per completare al meglio l'analisi dei test e del codice in se, aggiungendo questi dati all'analisi effettuata con SonarQube.\\*
+	    
+	    Una estensione molto interessante potrebbe essere l'introduzione del processo di \textbf{Continuous Deployment}, come seguito al processo di \emph{Continuous Delivery}, sfruttando la standardizzazione del deployment che viene effettuato in ambiente Kubernetes. A riguardo potrebbe essere interessante esplorare l'utilizzo di metodologie come \textbf{GitOps}\cite{gitops} (con strumenti come \emph{Argo CD} o \emph{Jenkins X}), che definiscono in modo dichiarativo l'intero sistema, compresi deployment e configurazioni degli stessi, permettendo quindi di integrare un task come una \emph{release} nel classico processo di sviluppo mediante Pull Requests e Code Review.\\*
+	
+	    Il progetto è stato particolarmente \emph{challenging} fin dall'inizio, con l'introduzione di strumenti che personalmente non avevo mai utilizzato ne configurato, ma soprattutto il flusso finale è stato risultato di diversi cambiamenti effettuati in diverse iterazioni dello sviluppo, segno che anche lo sviluppo di un flusso \emph{DevOps-oriented} necessita di un approccio \emph{Agile}.\\*
+	    
+	    Molte tecnologie, particolarità delle stesse, complessità nel design, sono state apprese durante il Project Work, segno quindi di una crescita a livello professionale notevole e sicuramente applicabile in futuro in molti ambiti. Altre tecnologie invece, come Jenkins, Docker, SonarQube e in parte l'utilizzo di AWS, le ho potute affinare non poco grazie alla complessità superiore di questo progetto rispetto ad altri precedenti.
+
+\end{document}

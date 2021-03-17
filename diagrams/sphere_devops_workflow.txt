@@ -1,0 +1,51 @@
+title Sphere - DevOps Flow (High Level)
+
+actor Developer
+participant Orchestrator
+actor Reviewer
+participant CI
+participant CD
+participant Repository
+
+loop until accepted
+    loop until finished
+        Developer->Developer: write code
+        activate Developer
+        Developer->Developer: test code
+    end
+    
+    Developer->Orchestrator: ask for review
+    deactivate Developer
+    activate Orchestrator
+    Orchestrator->CI: test changes
+    activate CI
+    CI-->Orchestrator: test report
+    deactivate CI
+    
+    alt result = OK
+        Orchestrator-->>Reviewer: notify review
+    else result = ERROR
+        Orchestrator-->>Developer: notify errors
+        note over Developer: fixes code (loops from the beginning)
+    end
+    deactivate Orchestrator
+end
+
+Reviewer->Orchestrator: accept review
+activate Orchestrator
+Orchestrator->Repository: push changes
+Orchestrator->CI: integrate and analyze
+deactivate Orchestrator
+activate CI
+CI->CI: test and analyze
+deactivate CI
+
+note over Developer: when release
+Developer->Repository: tag version
+activate Repository
+Repository-->>CD: notify tag
+deactivate Repository
+activate CD
+CD->CD: build artifacts
+CD->Repository: push artifacts
+deactivate CD

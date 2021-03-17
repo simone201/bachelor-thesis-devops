@@ -1,0 +1,34 @@
+title Sphere CI - Continuous Build
+
+participant Arcanist
+participant Phabricator
+participant Jenkins
+participant macOS Agent
+participant EC2 Agent
+
+# Apply patch to code
+Phabricator-->Jenkins: run build
+activate Jenkins
+Jenkins->Arcanist: arc patch
+activate Arcanist
+Arcanist->Phabricator: get patch
+Phabricator-->Arcanist: patch
+Arcanist-->Jenkins: patch
+deactivate Arcanist
+Jenkins->Jenkins: apply patch to code
+
+# Run PR build
+Jenkins->macOS Agent: run iOS build
+activate Jenkins
+activate macOS Agent
+Jenkins->EC2 Agent: run backend build
+activate EC2 Agent
+macOS Agent-->>Jenkins: build result
+deactivate macOS Agent
+EC2 Agent-->>Jenkins: build result
+Jenkins->EC2 Agent: run tests
+EC2 Agent->EC2 Agent: analyze tests
+EC2 Agent-->>Jenkins: analysis result
+deactivate EC2 Agent
+Jenkins-->Phabricator: build result
+deactivate Jenkins

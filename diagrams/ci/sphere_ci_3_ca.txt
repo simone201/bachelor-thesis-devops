@@ -1,0 +1,35 @@
+title Sphere CI - Code Analysis
+
+participant Arcanist
+participant Phabricator
+participant Jenkins
+participant macOS Agent
+participant EC2 Agent
+participant SonarQube
+
+# PR landing
+Arcanist->Phabricator: close PR
+activate Phabricator
+
+# Run build on master
+Phabricator-->Jenkins: run build on master
+deactivate Phabricator
+activate Jenkins
+Jenkins->macOS Agent: run iOS build
+activate macOS Agent
+Jenkins->EC2 Agent: run backend build
+activate EC2 Agent
+macOS Agent-->>Jenkins: build result
+deactivate macOS Agent
+EC2 Agent-->>Jenkins: build result
+Jenkins->EC2 Agent: run tests
+EC2 Agent->EC2 Agent: analyze tests
+EC2 Agent-->>Jenkins: analysis result
+Jenkins->EC2 Agent: run code analysis
+EC2 Agent-->SonarQube: run Sonar Scanner
+activate SonarQube
+SonarQube-->SonarQube: analyze code and coverage
+deactivate SonarQube
+EC2 Agent-->Jenkins: finish
+deactivate EC2 Agent
+deactivate Jenkins

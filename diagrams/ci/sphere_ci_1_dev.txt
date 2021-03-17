@@ -1,0 +1,63 @@
+title Sphere CI - Development
+
+actor Developer
+participant Repo
+participant Arcanist
+participant Phabricator
+participant Jenkins
+actor Reviewer
+
+Developer-->Repo: git checkout -b <branch>
+
+loop until accepted
+    loop until finished
+        Developer-->Repo: git commit
+    end
+
+    Developer->Arcanist: arc diff
+    activate Arcanist
+    Arcanist->Repo: arc lint
+    Repo-->>Arcanist: success
+    Arcanist->Repo: arc unit
+    Repo-->>Arcanist: success
+    Arcanist->Phabricator: create/update PR
+    deactivate Arcanist
+    activate Phabricator
+    
+    Phabricator->ref over Jenkins: run build
+        Continuous Build
+    end ref -> Phabricator: build result
+
+    alt build result = success
+        Phabricator->Phabricator: PR: ready to review
+        activate Phabricator
+        deactivate Phabricator
+    else build result = failure
+        Phabricator->Phabricator: PR: changes planned
+        activate Phabricator
+        deactivate Phabricator
+    end
+
+    Phabricator-->>Developer: notify PR/revision status
+    Phabricator-->>Reviewer: notify new PR/revision
+
+    Reviewer->Phabricator: accepts/refuses revision
+    alt accepted
+        Phabricator-->>Developer: notify acceptance
+    else refused
+        Phabricator-->>Developer: notify refusal
+    end
+end
+
+# PR landing
+Developer->Arcanist: arc land
+activate Arcanist
+Arcanist->Repo: git merge <branch> in master
+Arcanist->Phabricator: close PR
+deactivate Arcanist
+
+Phabricator->ref over Jenkins: run build
+    Code Analysis
+end ref
+
+deactivate Phabricator

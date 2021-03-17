@@ -1,0 +1,31 @@
+title Sphere CD Flow
+
+actor Developer
+participant Bitbucket
+participant Jenkins
+participant AWS CodeBuild
+participant ECR
+participant GChat
+
+Developer-->Bitbucket: git tag <service>/<version>
+Bitbucket-->Jenkins: notify new tag
+
+Jenkins->Jenkins: trigger CD pipeline
+activate Jenkins
+
+Jenkins->Jenkins: parse tag
+Jenkins->AWS CodeBuild: build(service, version)
+activate AWS CodeBuild
+
+AWS CodeBuild->AWS CodeBuild: bazel build <service>.tar
+AWS CodeBuild->AWS CodeBuild: docker image import <service>.tar
+AWS CodeBuild->AWS CodeBuild: docker tag
+
+AWS CodeBuild->ECR: aws ecr login
+AWS CodeBuild->ECR: docker push
+
+AWS CodeBuild-->>Jenkins: build result
+deactivate AWS CodeBuild
+
+Jenkins-->GChat: notify
+deactivate Jenkins

@@ -1,0 +1,44 @@
+title Sphere - Legacy Development Flow
+
+actor Developer
+participant Bitbucket
+participant Jenkins
+participant AWS CodeBuild
+actor Reviewer
+
+Developer->Bitbucket: git checkout -b feature/<name>
+
+loop until finished
+    Developer->Developer: git commit
+    Developer->Bitbucket: git push
+end
+
+Developer->Bitbucket: open Pull Request
+Bitbucket-->>Reviewer: notify new PR
+activate Bitbucket
+
+loop until approved
+    Reviewer->Bitbucket: ask for changes
+    Bitbucket-->>Developer: notify PR rejected
+end
+
+Reviewer->Bitbucket: approve
+Bitbucket-->>Developer: notify PR approved
+Bitbucket->Bitbucket: merge PR to master
+
+Bitbucket-->>Jenkins: notify approval
+deactivate Bitbucket
+activate Jenkins
+Jenkins->AWS CodeBuild: run backend build
+activate AWS CodeBuild
+Jenkins->Jenkins: run macOS build
+activate Jenkins
+Jenkins-->Jenkins: macOS build status
+deactivate Jenkins
+AWS CodeBuild-->Jenkins: backend build status
+deactivate AWS CodeBuild
+Jenkins-->Bitbucket: combined build status
+deactivate Jenkins
+activate Bitbucket
+Bitbucket->Bitbucket: set build status
+deactivate Bitbucket
