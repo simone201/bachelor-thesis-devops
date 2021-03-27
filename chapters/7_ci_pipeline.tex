@@ -22,7 +22,7 @@
         	        \item Alla chiusura della PR, Phabricator richiama di nuovo la CI per effettuare il testing finale della codebase ed avviare l'analisi statica del codice.
         	    \end{enumerate}
         	    
-        	    Queste regole vengono configurate su vari livelli dello stack di sistema offerto da Phabricator, in particolare il sistema di traccimento delle build automatiche viene gestito da \textbf{Harbormaster}, mentre le regole che definiscono i comportamenti in base a determinati eventi (es. avvio la build se arriva una nuova PR) vengono definite da \textbf{Herald}. La gestione della Code Review viene invece affidata a \textbf{Differential}, che agganciandosi al sistema di autenticazione ed utenze del core di Phabricator, permette di controllare per singolo utente le Pull Requests aperte con annesse statistiche.
+        	    Queste regole vengono configurate su vari livelli dello stack di sistema offerto da Phabricator, in particolare il sistema di tracciamento delle build automatiche viene gestito da \textbf{Harbormaster}, mentre le regole che definiscono i comportamenti in base a determinati eventi (es. avvio la build se arriva una nuova PR) vengono definite da \textbf{Herald}. La gestione della Code Review viene invece affidata a \textbf{Differential}, che agganciandosi al sistema di autenticazione ed utenze del core di Phabricator, permette di controllare per singolo utente le Pull Requests aperte con annesse statistiche.
         	
         	\subsection{Jenkins: il motore del processo}
         	
@@ -101,7 +101,7 @@ def createTestOutputXml(outputFile) {
         	
         	\subsection{SonarQube: controllo qualità}
         	
-        	    Dopo la fase di \emph{merge} della Pull Request all'interno della \emph{master branch}, Phabricator avvia nuovamente la pipeline di \emph{Continuous Build} su Jenkins ma con parametri differenti. Jenkins infatti non applicherà più le patch al codice, ma effettuerà l'analisi statica e dinamica del codice sfruttando \textbf{Sonar Scanner} e l'istanza di \textbf{SonarQube} installata. L'analisi viene effettuata automaticamente solo sui servizi di backend in \textbf{Python e C++}, a causa di una limitazione nell'uso commerciale della analisi di codice Swift, e per ogni servizio viene definito un file di configurazione \verb|.properties| come segue:
+        	    Dopo la fase di \emph{merge} della Pull Request all'interno della \emph{master branch}, Phabricator avvia nuovamente la pipeline di \emph{Continuous Build} su Jenkins ma con parametri differenti. Jenkins infatti non applicherà più le patch al codice, ma effettuerà l'analisi statica e dinamica del codice sfruttando \textbf{Sonar Scanner} e l'istanza di \textbf{SonarQube} installata. L'analisi viene effettuata automaticamente solo sui servizi di backend in \textbf{Python e C++}, a causa di una limitazione nell'uso commerciale dell'analisi di codice Swift, e per ogni servizio viene definito un file di configurazione \verb|.properties| come segue:
         	    \begin{lstlisting}
 sonar.projectKey=service-name
 sonar.projectName=Sphere - Service Name
@@ -236,7 +236,7 @@ withSonarQubeEnv(installationName: "${env.SONARQUBE_SERVER_NAME}", envOnly: true
 
             Durante il corso del design ed implementazione della pipeline di \emph{Continuous Integration} vi sono state diverse modifiche nell'approccio ad uno dei problemi fondamentali, ovvero i tempi di compilazione.\\*
             
-            Partendo come spunto dal processo legacy precedente, si era provato inizialmente a \textbf{riutilizzare} il servizio di \textbf{AWS CodeBuild} con poco successo, anche sfruttando i sistemi di caching remoto o tramite file system, a causa della astrazione che fa il sistema non poteva garantire l'utilizzo della stessa macchina e quindi dello stesso ambiente. Questo fatto causava problemi a Bazel che spesso e volentieri ricompilava intere dipendenze per un cambio solo dell'ambiente di build, allungando le tempistiche al pari del processo precedente.\\*
+            Partendo come spunto dal processo legacy precedente, si era provato inizialmente a \textbf{riutilizzare} il servizio di \textbf{AWS CodeBuild} con poco successo, anche sfruttando i sistemi di caching remoto o tramite file system, a causa della astrazione che fa il sistema non si poteva garantire l'utilizzo della stessa macchina e quindi dello stesso ambiente. Questo fatto causava problemi a Bazel che spesso e volentieri ricompilava intere dipendenze per un cambio solo dell'ambiente di build, allungando le tempistiche al pari del processo precedente.\\*
             
             Un altro problema sorto durante lo sviluppo è stata la \textbf{connessione VPN} utilizzata sull'\textbf{Apple Mac Mini}, inizialmente gestita a livello di client nel sistema operativo, che frequentemente si disconnetteva e faceva fallire delle build avviate da Jenkins specialmente nelle fasi iniziali (ma dopo lunghi timeout). A seguito di un ammodernamento dell'infrastruttura di rete \emph{on premise}, si è poi spostata la connessione VPN a livello di router, eliminando così questa variabile e risolvendo definitivamente il problema.\\*
             

@@ -104,7 +104,7 @@ phases:
     	    
     	    Ad ogni \emph{push} di una nuova immagine il registry effettua una \textbf{Analisi Statica delle Vulnerabilità}, seguendo come indicazione la lista delle \textbf{Common Vulnerabilities and Exposures}\cite{cve} (CVE), ed utilizzando come strumento di analisi \textbf{Quay Clair}\cite{quay_clair}, un software \emph{open source} che permette di analizzare qualsiasi container che segua la specifica \textbf{OCI}. Nel caso in cui la gravità della vulnerabilità non sia contenuta nel repository ufficiale dei CVE, ECR utilizza il \textbf{Common Vulnerability Scoring System}\cite{cvss} (CVSS), mediante il quale computa un punteggio e lo confronta con il \textbf{National Vulnerability Database}\cite{nist_nvd} (NVD) del \textbf{NIST}.\\*
     	    
-    	    Per configurare l'analisi statica delle vulnerabilità di un repository in ECR, basta abilitare tale funzione al momento della creazione dello stesso o in un secondo momento, oppure è possibile anche effettuare analisi \emph{on demand} manuali in un secondo momento.
+    	    Per configurare l'analisi statica delle vulnerabilità di un repository in ECR, basta abilitare tale funzione al momento della creazione dello stesso o in un secondo momento, oppure è possibile anche effettuare analisi \emph{on demand} manuali successivamente.
     	
     	\section{Risultati}
     	
@@ -130,7 +130,7 @@ phases:
 
         \section{Esperienza Applicativa}
 
-            Le scelte effettuate in materia di \emph{Continuous Delivery} sono state condizionate dal volere di mantenere semplice il processo, come ad esempio l'utilizzo di un servizio \emph{managed} per la compilazione come \textbf{AWS CodeBuild} al posto dello stesso sistema utilizzato nella pipeline di \emph{Continuous Integration}. Questo ha permesso di poter sviluppare un processo high level molto generico e semplice, e di poter poi modificare la fase di compilazione agendo solo sulla specifica in formato \emph{YAML} di CodeBuild, riducendo il lavoro necessario all'adattamento per altri progetti.\\*
+            Le scelte effettuate in materia di \emph{Continuous Delivery} sono state condizionate dal voler mantenere semplice il processo, come ad esempio l'utilizzo di un servizio \emph{managed} per la compilazione come \textbf{AWS CodeBuild} al posto dello stesso sistema utilizzato nella pipeline di \emph{Continuous Integration}. Questo ha permesso di poter sviluppare un processo high level molto generico e semplice, e di poter poi modificare la fase di compilazione agendo solo sulla specifica in formato \emph{YAML} di CodeBuild, riducendo il lavoro necessario all'adattamento per altri progetti.\\*
             
             L'unico reale problema sorto durante lo sviluppo è stato causato da un bug del \textbf{BitBucket Plugin} per Jenkins, che non riusciva ad avviare con successo una pipeline configurata correttamente, poi circumnavigato grazie alla creazione di un secondo processo (Job), avviato dal plugin correttamente, che passava i dati ricevuti alla pipeline corretta.
 
